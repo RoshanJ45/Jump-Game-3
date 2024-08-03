@@ -1,0 +1,12 @@
+class Solution {
+    unordered_set<int> visited;
+public:
+    bool canReach(vector<int>& arr, int start) {
+        if(visited.count(start) || start < 0 || start >= arr.size())
+        return false;
+        if(arr[start] == 0) return true;
+        visited.insert(start);
+        return canReach(arr, start + arr[start])
+            || canReach(arr, start - arr[start]);    
+    }
+};
